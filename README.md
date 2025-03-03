@@ -1,15 +1,60 @@
-# Eating Disorders Prediction
+# ED Predictions
 
-This repository contains the code, data, and results for the project on predicting symptoms and recovery from eating disorders. 
+This repository contains a machine learning project for predicting Eating Disorder (ED) risk and recovery levels using various regression models, including Support Vector Regression (SVR) and Naïve Bayes models. The project is implemented in Python and utilizes Streamlit for an interactive web-based interface.
 
-## Data
+## Features
+- **Data Preprocessing**: Cleaning and transforming raw data for modeling.
+- **Synthetic Data Generation**: Using SMOTE to generate synthetic samples.
+- **Model Training**: Training multiple models, including SVR and Naïve Bayes.
+- **Prediction Application**: A Streamlit-based app for making predictions based on uploaded CSV files.
 
-The dataset used in this project is included in the `data` directory. It consists of anonymized participant data collected through questionnaires related to eating disorder symptoms, self-perception, self-acceptance, and quality of life. The data has been preprocessed and scaled to ensure compatibility with the machine learning models.
+## Folder Structure
+```
+ED_PREDICTIONS/
+│── models/                 # Saved trained models (.pkl)
+│   ├── svr_model.pkl       # Support Vector Regression model
+│   ├── nb_resi_model.pkl   # Naïve Bayes model for resilience
+│── Notebooks/              # Jupyter notebooks for data analysis and training
+│   ├── Predict ED Risk.ipynb
+│   ├── Predict Recovery Level.ipynb
+│── sample data/            # Example datasets
+│   ├── synthetic_data.csv  # Generated synthetic data
+│── app.py                  # Streamlit app for predictions
+│── README.md               # Project documentation
+```
 
-## Code
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/ED_PREDICTIONS.git
+   cd ED_PREDICTIONS
+   ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the Streamlit app:
+   ```bash
+   streamlit run app.py
+   ```
 
-The main code files for this project are the `Predecir EAT.ipynb` and `Predecir Nivel de recuperación.ipynb` Jupyter Notebooks. They contain all the necessary code for data preprocessing, model training, evaluation, and result analysis. 
+## Usage
+1. Upload a CSV file containing the necessary input features.
+2. The app will preprocess the data and apply the trained models.
+3. The predicted ED risk and recovery levels will be displayed.
 
-## Results
+## Requirements
+- Python 3.8+
+- pandas
+- numpy
+- scikit-learn
+- imbalanced-learn
+- joblib
+- streamlit
 
-The `results` directory contains the output and analysis of the predictive models. This includes evaluation metrics, such as F1-score, ROC AUC, specificity, sensitivity, and R2 score. 
+## License
+This project is licensed under the MIT License. Feel free to use and modify it.
+
+## Author
+[Your Name] - [Your Contact Info]
+
