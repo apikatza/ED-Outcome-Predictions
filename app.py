@@ -3,8 +3,8 @@ import pandas as pd
 import joblib
 
 # Load the previously saved models
-svr = joblib.load("svr_model.pkl")
-nb_resi = joblib.load("nb_resi_model.pkl")
+svr = joblib.load("models/svr_model.pkl")
+nb_resi = joblib.load("models/nb_resi_model.pkl")
 
 st.title("Prediction of ED Risk and Recovery Level")
 
@@ -16,7 +16,7 @@ if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     
     st.write("File preview:")
-    st.dataframe(df.head())
+    st.dataframe(df)
 
     # Check if there is data
     if not df.empty:
