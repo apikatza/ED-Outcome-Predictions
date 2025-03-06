@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import numpy as np
 
 # Load the previously saved models
 svr = joblib.load("models/svr_model.pkl")
@@ -22,6 +23,14 @@ if uploaded_file is not None:
     if not df.empty:
         # Make the prediction with the SVR model
         try:
+            y = df.filter(like='EAT')
+            for column in y.columns:
+                y[column] = pd.to_numeric(y[column], errors='coerce')
+            y = y.sum(axis=1)
+            y = np.where(y > 20, 1, 0)
+            df['ED at present?'] = np.where(y == 1, 'Yes', 'No')
+
+
             df_ec = pd.DataFrame()
             c = df.filter(regex='^WHOQOL').columns.tolist()
             df_ec['WHOQOL'] = df[c].sum(axis=1)
@@ -47,10 +56,11 @@ if uploaded_file is not None:
             
             # Show the prediction results
             df_result = pd.DataFrame()
-            df_result["Risk of ED?"] = predictions_nb
-            df_result["Risk of ED?"] = df_result["Risk of ED?"].apply(lambda x: "No risk" if x == 0 else "Risk")
-            df_result["Recovery Level"] = predictions_svr
-            df_result["Recovery Level"] = (df_result["Recovery Level"] * 100).round(-1)
+            df_result["ED at present?"] = df["ED at present?"]
+            df_result["Risk of ED in 1 year?"] = predictions_nb
+            df_result["Risk of ED in 1 year?"] = df_result["Risk of ED in 1 year?"].apply(lambda x: "No risk" if x == 0 else "Risk")
+            df_result["Recovery Level in 1 year"] = predictions_svr
+            df_result["Recovery Level in 1 year"] = (df_result["Recovery Level in 1 year"] * 100).round(-1)
             
             st.write("Prediction results:")
             st.dataframe(df_result)
