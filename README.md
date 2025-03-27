@@ -52,9 +52,6 @@ ED_PREDICTIONS/
 - joblib
 - streamlit
 
-## License
-This project is licensed under the MIT License. Feel free to use and modify it.
-
 ## Author
-[Your Name] - [Your Contact Info]
+Amaia Pikatza-Huerga - a.pikatza@deusto.es
 
