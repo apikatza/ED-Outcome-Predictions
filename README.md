@@ -1,6 +1,6 @@
 # ED Predictions
 
-This repository contains a machine learning project for predicting Eating Disorder (ED) risk and recovery levels using various regression models, including Support Vector Regression (SVR) and Naïve Bayes models. The project is implemented in Python and utilizes Streamlit for an interactive web-based interface also available at https://ed-outcome-predictions.streamlit.app/.
+This repository contains a machine learning project for predicting Eating Disorder (ED) risk and recovery levels using various regression models, including Support Vector Regression (SVR) and Naïve Bayes models. The project is implemented in Python and utilises Streamlit for an interactive web-based interface also available at https://ed-outcome-predictions.streamlit.app/.
 
 ## Features
 - **Data Preprocessing**: Cleaning and transforming raw data for modeling.
